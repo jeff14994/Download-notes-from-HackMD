@@ -4,7 +4,7 @@ import os
 import sys
 
 #print command line arguments 
-print(sys.argv)
+# print(sys.argv)
 dotenv.load_dotenv()
 # check if token is passed as argument
 if len(sys.argv) > 1:
