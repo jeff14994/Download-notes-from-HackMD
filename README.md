@@ -4,8 +4,9 @@
 python note_download.py -t <token> -s <tags>
 ```
 or 
-```bash
+
 create .env file with the following content
+```bash
 TOKEN=<token>
 TAG=<tag>
 ```
