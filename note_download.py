@@ -17,7 +17,9 @@ else:
         api_key = dotenv.dotenv_values(".env")['TOKEN'] 
         tag = dotenv.dotenv_values(".env")['TAG'] 
     except:
-        print("Please set the token and tag in .env file")
+        # print("Please set the token and tag in .env file")
+        # usage
+        print("Usage: python3 note_download.py --token <token> --tag <tag>")
         sys.exit(1)
 print(tag)
 print(api_key)
