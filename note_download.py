@@ -21,8 +21,8 @@ else:
         # usage
         print("Usage: python3 note_download.py --token <token> --tag <tag>")
         sys.exit(1)
-print(tag)
-print(api_key)
+# print(tag)
+# print(api_key)
 
 # print(api_key)
 url = "https://api.hackmd.io/v1/notes"
