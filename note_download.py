@@ -1,9 +1,23 @@
 import dotenv
 import requests
 import os
+import sys
 
+#print command line arguments 
+print(sys.argv)
 dotenv.load_dotenv()
-api_key = dotenv.dotenv_values(".env")['TOKEN']
+# check if token is passed as argument
+if len(sys.argv) > 1:
+    token = sys.argv[2]
+    tag = sys.argv[4] 
+    api_key = token
+    tag = tag
+else:
+    api_key = dotenv.dotenv_values(".env")['TOKEN'] 
+    tag = dotenv.dotenv_values(".env")['TAG'] 
+print(tag)
+print(api_key)
+
 # print(api_key)
 url = "https://api.hackmd.io/v1/notes"
 headers = { "Authorization": "Bearer " + api_key}
@@ -14,7 +28,7 @@ response = requests.get(url, headers=headers)
 note_id_list = []
 for note in response.json():
     try:
-        if "5g_notes" in note['tags']:
+        if tag in note['tags']:
             note_id = note['id']
             note_id_list.append(note_id)
             # print(note_id_list)
@@ -23,7 +37,11 @@ for note in response.json():
 print(note_id_list)
 
 # create a directory to store the notes
-os.mkdir("5g_notes")
+# if file doesn't exist, create it
+if not os.path.exists("5g_notes"):
+    os.mkdir("5g_notes")
+else:
+    pass
 # cd into the directory
 os.chdir("5g_notes")
 
